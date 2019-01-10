@@ -3,12 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node server.js",
+    "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build --prod"
+    "postinstall": "ng build --aot -prod"
   },
   "private": true,
   "dependencies": {
@@ -24,10 +24,13 @@
     "@angular/router": "~7.1.0",
     "core-js": "^2.5.4",
     "express": "^4.16.4",
+    "jquery": "^3.3.1",
     "path": "^0.12.7",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
     "typescript": "~3.1.6",
+    "bootstrap": "^3.3.7",
+    "font-awesome": "^4.7.0",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
@@ -38,8 +41,10 @@
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
+    "bootstrap": "^3.3.7",
     "codelyzer": "~4.5.0",
     "enhanced-resolve": "^4.1.0",
+    "font-awesome": "^4.7.0",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~3.1.1",
