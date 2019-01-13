@@ -1,17 +1,10 @@
-<nav class="navbar navbar-inverse navbar-static-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Sparrow</a>
-    </div>
-  </div>
-</nav>
 <div class="container-fluid" style="padding-top: 40px">
 <div class="row">
 <div class="col-sm-4">
   <div class="panel panel-primary">
     <div class="panel-heading">Remaining</div>
     <div class="panel-body">
-          50,000
+          {{remaining}}
     </div>
   </div>
 </div>
@@ -20,9 +13,7 @@
     <div class="panel-heading">Spent</div>
     <div class="panel-body">
             <ul class="list-group list-group-flush">
-              <a class="list-group-item">5000</a>
-              <a class="list-group-item">6000</a>
-              <a class="list-group-item">7000</a>
+              <a *ngFor="let spent of spentArr" class="list-group-item" (click)="loadDetails(spent)">{{spent.amount}} - {{spent.category}}</a>
             </ul>
     </div>
   </div>
@@ -31,6 +22,11 @@
     <div class="panel panel-primary">
         <div class="panel-heading">Details</div>
         <div class="panel-body">
+          <div *ngIf="detailTrue">
+            <p>Amount Spent : {{amountSpent}}</p><br>
+            <p>Category : {{category}}</p><br>
+            <p>Details Given : {{detail}}</p>
+          </div>
         </div>
       </div>
 </div>
