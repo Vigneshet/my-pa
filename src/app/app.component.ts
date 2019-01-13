@@ -24,7 +24,7 @@ export class AppComponent {
       this.selectedObj = this.expenseObj[0];}, error => console.log(error));
   }
   public getJSON(): Observable<any> {
-    return this.http.get("../assets/expense.json")
+    return this.http.get("https://sparrow-pa-service.herokuapp.com/getExpenses")
                     .map((res:any) => {console.log(res.json());return res.json(); });
   }
 }
