@@ -25,7 +25,7 @@ export class AppComponent {
       this.selectedObj = this.expenseObj[0];}, error => console.log(error));
   }
   public getJSON(): Observable<any> {
-    return this.http.get("http://localhost:8080/getExpenses")
+    return this.http.get("https://sparrow-pa-service.herokuapp.com/getExpenses")
                     .map((res:any) => {console.log(res.json());return res.json(); });
   }
 
@@ -38,7 +38,7 @@ export class AppComponent {
     console.log(JSON.stringify(this.expenseObj));
     let header = new Headers({'Content-Type': 'application/json'});
     let options = new RequestOptions({headers:header});
-    this.http.post("http://localhost:8080/updateExpense",JSON.stringify(this.expenseObj),options).subscribe((val)=>{
+    this.http.post("https://sparrow-pa-service.herokuapp.com/updateExpense",JSON.stringify(this.expenseObj),options).subscribe((val)=>{
       console.log(val);
     });
   }
