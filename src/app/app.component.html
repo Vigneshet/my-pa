@@ -9,6 +9,6 @@
     </div>
   </nav>
 <div *ngIf="selectedObj">
-<app-expense [selectedObj]="selectedObj"></app-expense>
+<app-expense [selectedObj]="expenseObj[0]" (update)="callUpdate($event)"></app-expense>
 </div>
 <router-outlet></router-outlet>

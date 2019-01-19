@@ -4,16 +4,16 @@
   <div class="panel panel-primary">
     <div class="panel-heading">Remaining</div>
     <div class="panel-body">
-          {{remaining}}
+          {{selectedObj.data.total}}
     </div>
   </div>
 </div>
 <div class="col-sm-4">
   <div class="panel panel-primary">
-    <div class="panel-heading">Spent</div>
+    <div class="panel-heading">Spent <span class="glyphicon glyphicon-plus pull-right" (click)="openModal()"></span></div>
     <div class="panel-body">
             <ul class="list-group list-group-flush">
-              <a *ngFor="let spent of spentArr" class="list-group-item" (click)="loadDetails(spent)">{{spent.amount}} - {{spent.category}}</a>
+              <a *ngFor="let spent of selectedObj.data.spent" class="list-group-item" (click)="loadDetails(spent)">{{spent.amount}} - {{spent.category}}</a>
             </ul>
     </div>
   </div>
@@ -32,3 +32,4 @@
 </div>
 </div>
 </div>
+<app-modal [showModal]="showModal" [selectedObj]="selectedObj" (updateEvent)="callUpdate()"></app-modal>

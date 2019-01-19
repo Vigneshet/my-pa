@@ -4,6 +4,7 @@ import {Observable, Subject} from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { ExpenseComponent } from './expense/expense.component';
+import { Expense } from './expenseModel';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ import { ExpenseComponent } from './expense/expense.component';
 @Injectable()
 export class AppComponent {
   title = 'my-pa';
-  expenseObj: any;
+  expenseObj: Expense[];
   @Output() selectedObj:any;
   @ViewChild(ExpenseComponent) expense :ExpenseComponent; 
   constructor(private http:Http){
@@ -24,7 +25,21 @@ export class AppComponent {
       this.selectedObj = this.expenseObj[0];}, error => console.log(error));
   }
   public getJSON(): Observable<any> {
-    return this.http.get("https://sparrow-pa-service.herokuapp.com/getExpenses")
+    return this.http.get("http://localhost:8080/getExpenses")
                     .map((res:any) => {console.log(res.json());return res.json(); });
+  }
+
+  callUpdate(selectObj : Expense){
+    this.expenseObj.forEach((element)=>{
+      if(element.name == selectObj.name){
+        element.data = selectObj.data;
+      }
+    });
+    console.log(JSON.stringify(this.expenseObj));
+    let header = new Headers({'Content-Type': 'application/json'});
+    let options = new RequestOptions({headers:header});
+    this.http.post("http://localhost:8080/updateExpense",JSON.stringify(this.expenseObj),options).subscribe((val)=>{
+      console.log(val);
+    });
   }
 }
