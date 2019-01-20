@@ -21,6 +21,10 @@ export class ModalComponent implements OnInit {
   ngOnInit() {
   }
 
+  openModal(){
+    this.showModal = true;
+  }
+
   closeModal(){
     this.showModal = false;
   }
