@@ -1,5 +1,6 @@
-import { Component, OnInit, Input ,EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input ,EventEmitter, Output, ViewChild } from '@angular/core';
 import { Expense, UnitSpend } from '../expenseModel';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-expense',
@@ -10,6 +11,7 @@ export class ExpenseComponent implements OnInit {
 
   @Input() selectedObj:Expense;
   @Output() update:EventEmitter<Expense> = new EventEmitter();
+  @ViewChild(ModalComponent) modalComponent:ModalComponent;
   remaining:string;
   spentArr:UnitSpend[];
   detail:any;
@@ -36,7 +38,8 @@ export class ExpenseComponent implements OnInit {
   }
 
   openModal(){
-    this.showModal= true;
+    this.modalComponent.openModal();
+    //this.showModal= true;
   }
 
   callUpdate(){
